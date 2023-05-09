@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "dd376d51-dffa-465d-96de-036d9cc2e100",
+		"name": "AT Proto Local API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25514098"
+	},
+	"item": [
+		{
+			"name": "Create Invite Code",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"useCount\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.server.createInviteCode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.server.createInviteCode"
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"handle\": \"antpb.test\",\n  \"email\": \"anthony@xpportal.io\",\n  \"password\": \"password\",\n  \"inviteCode\": \"localhost-oxsyl-4xk5c\"\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.server.createAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.server.createAccount"
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "Login Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identifier\": \"antpb.test\",\n    \"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.server.createSession",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.server.createSession"
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"repo\": \"did:plc:jkzmqb6t6huizfz3llc35u6b\",\n  \"collection\": \"app.bsky.feed.post\",\n  \"record\": {\n    \"$type\": \"app.bsky.feed.post\",\n    \"text\": \"New post 2\",\n    \"createdAt\": \"2023-05-09T12:34:56.789Z\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.repo.createRecord",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.repo.createRecord"
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Author Feed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:2583/xrpc/app.bsky.feed.getAuthorFeed?actor=antpb.test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"app.bsky.feed.getAuthorFeed"
+					],
+					"query": [
+						{
+							"key": "actor",
+							"value": "antpb.test"
+						}
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:2583/xrpc/app.bsky.actor.getProfile?actor=antpb.test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"app.bsky.actor.getProfile"
+					],
+					"query": [
+						{
+							"key": "actor",
+							"value": "antpb.test"
+						}
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		},
+		{
+			"name": "List Records for DID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImNvbS5hdHByb3RvLmFjY2VzcyIsInN1YiI6ImRpZDpwbGM6bXR6bG93dHpzNmJ2d2Zqb2FyejJ4d2lwIiwiaWF0IjoxNjgzNjUyMzU0LCJleHAiOjE2ODM2NTk1NTR9.DdByDstbp39mWyp0d7ENS3JPfrpLW74keJA3Lecshr4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.repo.listRecords?repo=did:plc:jkzmqb6t6huizfz3llc35u6b&collection=app.bsky.feed.post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.repo.listRecords"
+					],
+					"query": [
+						{
+							"key": "repo",
+							"value": "did:plc:jkzmqb6t6huizfz3llc35u6b"
+						},
+						{
+							"key": "collection",
+							"value": "app.bsky.feed.post"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Describe Repo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6ImNvbS5hdHByb3RvLmFjY2VzcyIsInN1YiI6ImRpZDpwbGM6amt6bXFiNnQ2aHVpemZ6M2xsYzM1dTZiIiwiaWF0IjoxNjgzNjYyMDY1LCJleHAiOjE2ODM2NjkyNjV9.p-EuzoBS5gfixnluAmae2tJUixtDVHhjD49wrZ1RXBc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:2583/xrpc/com.atproto.repo.describeRepo?repo=did:plc:smf5zbp7s3rvsbmcrbw2rs4r",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2583",
+					"path": [
+						"xrpc",
+						"com.atproto.repo.describeRepo"
+					],
+					"query": [
+						{
+							"key": "repo",
+							"value": "did:plc:smf5zbp7s3rvsbmcrbw2rs4r"
+						}
+					]
+				},
+				"description": "Create Account"
+			},
+			"response": []
+		}
+	]
+}
