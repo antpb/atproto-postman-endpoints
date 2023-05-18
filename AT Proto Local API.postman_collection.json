@@ -14,7 +14,7 @@
 					"basic": [
 						{
 							"key": "password",
-							"value": "password",
+							"value": "admin-pass",
 							"type": "string"
 						},
 						{
